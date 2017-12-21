@@ -7,7 +7,7 @@ import com.kunlun.entity.OrderLog;
 import com.kunlun.entity.PointLog;
 import com.kunlun.result.DataRet;
 import com.kunlun.result.PageResult;
-import com.kunlun.wxentity.wxUtils.WxUtil;
+import com.kunlun.utils.WxUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
