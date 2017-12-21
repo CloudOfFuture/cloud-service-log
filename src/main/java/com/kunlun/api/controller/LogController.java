@@ -2,6 +2,7 @@ package com.kunlun.api.controller;
 
 import com.kunlun.api.service.LogService;
 import com.kunlun.entity.OrderLog;
+import com.kunlun.entity.PointLog;
 import com.kunlun.result.DataRet;
 import com.kunlun.result.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author by kunlun
@@ -36,6 +39,30 @@ public class LogController {
     }
 
     /**
+     * 根据订单id查询订单日志列表
+     *
+     * @param orderId
+     * @return
+     */
+    @GetMapping("/findByOrderId")
+    public DataRet<List<OrderLog>> findByOrderId(@RequestParam(value = "order_id") Long orderId) {
+        return logService.findByOrderId(orderId);
+    }
+
+
+    /**
+     * 创建积分日志
+     *
+     * @param pointLog
+     * @return
+     */
+    @PostMapping("/add/pointLog")
+    public DataRet<String> addPointLog(@RequestBody PointLog pointLog) {
+        return logService.addPointLog(pointLog);
+    }
+
+
+    /**
      * 查询积分日志
      *
      * @return
@@ -46,4 +73,5 @@ public class LogController {
                                            @RequestParam(value = "wx_code") String wxCode) {
         return logService.findPointLogByOpenId(pageNo, pageSize, wxCode);
     }
+
 }

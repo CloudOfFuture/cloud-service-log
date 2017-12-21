@@ -1,8 +1,11 @@
 package com.kunlun.api.service;
 
 import com.kunlun.entity.OrderLog;
+import com.kunlun.entity.PointLog;
 import com.kunlun.result.DataRet;
 import com.kunlun.result.PageResult;
+
+import java.util.List;
 
 /**
  * @author by kunlun
@@ -18,6 +21,22 @@ public interface LogService {
      * @return
      */
     DataRet<String> addOrderLog(OrderLog orderLog);
+
+    /**
+     * 根据订单id查询日志列表
+     *
+     * @param orderId
+     * @return
+     */
+    DataRet<List<OrderLog>> findByOrderId(Long orderId);
+
+    /**
+     * 创建积分日志
+     *
+     * @param pointLog
+     * @return
+     */
+    DataRet<String> addPointLog(PointLog pointLog);
 
     /**
      * 根据openid查询 积分日志列表

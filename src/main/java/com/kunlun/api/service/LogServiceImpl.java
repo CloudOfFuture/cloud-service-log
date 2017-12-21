@@ -11,6 +11,8 @@ import com.kunlun.wxentity.wxUtils.WxUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author by kunlun
  * @version <0.1>
@@ -35,6 +37,30 @@ public class LogServiceImpl implements LogService {
     }
 
     /**
+     * 根据订单id查询日志列表
+     *
+     * @param orderId
+     * @return
+     */
+    @Override
+    public DataRet<List<OrderLog>> findByOrderId(Long orderId) {
+        List<OrderLog> orderLogs = logMapper.findByOrderId(orderId);
+        return new DataRet<>(orderLogs);
+    }
+
+    /**
+     * 创建积分日志
+     *
+     * @param pointLog
+     * @return
+     */
+    @Override
+    public DataRet<String> addPointLog(PointLog pointLog) {
+        logMapper.addPointLog(pointLog);
+        return new DataRet<>("创建积分日志成功");
+    }
+
+    /**
      * 根据openid查询 积分日志列表
      *
      * @param pageNo
@@ -49,4 +75,5 @@ public class LogServiceImpl implements LogService {
         Page<PointLog> page = logMapper.findPointLogByOpenId(openid);
         return new PageResult(page);
     }
+
 }
