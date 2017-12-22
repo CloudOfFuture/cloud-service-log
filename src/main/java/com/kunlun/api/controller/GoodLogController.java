@@ -28,9 +28,9 @@ public class GoodLogController {
      * @return
      */
     @PostMapping("/saveGoodLog")
-    public DataRet<String> saveGoodLog(@RequestParam("good_name") String goodName,
+    public DataRet<String> saveGoodLog(@RequestParam("goodName") String goodName,
                                        @RequestParam("action") String action,
-                                       @RequestParam("good_id") Long goodId){
+                                       @RequestParam("goodId") Long goodId){
         return goodLogService.saveGoodLog(goodName,action,goodId);
     }
 }
