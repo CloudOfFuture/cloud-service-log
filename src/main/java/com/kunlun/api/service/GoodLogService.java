@@ -14,8 +14,8 @@ public interface GoodLogService {
      *
      * @param goodName
      * @param action
-     * @param id
+     * @param goodId
      * @return
      */
-    DataRet<String> saveGoodLog(String goodName, String action, Long id);
+    DataRet<String> saveGoodLog(String goodName, String action, Long goodId);
 }

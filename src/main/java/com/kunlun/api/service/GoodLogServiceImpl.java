@@ -26,11 +26,11 @@ public class GoodLogServiceImpl implements GoodLogService {
      * @return
      */
     @Override
-    public DataRet<String> saveGoodLog(String goodName, String action, Long id) {
+    public DataRet<String> saveGoodLog(String goodName, String action, Long goodId) {
         GoodLog goodLog = new GoodLog();
         goodLog.setGoodName(goodName);
         goodLog.setAction(action);
-        goodLog.setGoodId(id);
+        goodLog.setGoodId(goodId);
         Integer result = goodLogMapper.add(goodLog);
         if (result == 0) {
             return new DataRet<>("ERROR","商品日志写入失败");

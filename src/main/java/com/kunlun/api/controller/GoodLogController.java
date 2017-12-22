@@ -3,10 +3,7 @@ package com.kunlun.api.controller;
 import com.kunlun.api.service.GoodLogService;
 import com.kunlun.result.DataRet;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author by hmy
@@ -30,10 +27,10 @@ public class GoodLogController {
      * @param id
      * @return
      */
-    @GetMapping("/saveGoodLog")
+    @PostMapping("/saveGoodLog")
     public DataRet<String> saveGoodLog(@RequestParam("good_name") String goodName,
                                        @RequestParam("action") String action,
-                                       @RequestParam("id") Long id){
-        return goodLogService.saveGoodLog(goodName,action,id);
+                                       @RequestParam("good_id") Long goodId){
+        return goodLogService.saveGoodLog(goodName,action,goodId);
     }
 }
