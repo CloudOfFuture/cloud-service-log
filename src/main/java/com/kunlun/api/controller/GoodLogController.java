@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @created on 2017-12-22.
  */
 @RestController
-@RequestMapping("goodLog")
+@RequestMapping("/backstage/goodLog")
 public class GoodLogController {
 
 
