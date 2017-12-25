@@ -74,4 +74,19 @@ public class LogController {
         return logService.findPointLogByOpenId(pageNo, pageSize, wxCode);
     }
 
+
+    /**
+     * 创建商品日志
+     *
+     * @param goodName
+     * @param action
+     * @param goodId
+     * @return
+     */
+    @PostMapping("/add/goodLog")
+    public DataRet<String> saveGoodLog(@RequestParam(value = "goodName") String goodName,
+                                       @RequestParam(value = "action") String action,
+                                       @RequestParam(value = "goodId") Long goodId){
+        return logService.addGoodLog(goodName,action,goodId);
+    }
 }

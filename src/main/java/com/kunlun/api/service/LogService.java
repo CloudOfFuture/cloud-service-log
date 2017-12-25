@@ -47,4 +47,15 @@ public interface LogService {
      * @return
      */
     PageResult findPointLogByOpenId(Integer pageNo, Integer pageSize, String wxCode);
+
+
+    /**
+     * 创建商品日志
+     *
+     * @param goodName
+     * @param action
+     * @param goodId
+     * @return
+     */
+    DataRet<String> addGoodLog(String goodName, String action, Long goodId);
 }

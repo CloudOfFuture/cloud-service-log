@@ -3,6 +3,7 @@ package com.kunlun.api.service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.kunlun.api.mapper.LogMapper;
+import com.kunlun.entity.GoodLog;
 import com.kunlun.entity.OrderLog;
 import com.kunlun.entity.PointLog;
 import com.kunlun.result.DataRet;
@@ -74,6 +75,28 @@ public class LogServiceImpl implements LogService {
         PageHelper.startPage(pageNo, pageSize);
         Page<PointLog> page = logMapper.findPointLogByOpenId(openid);
         return new PageResult(page);
+    }
+
+
+    /**
+     * 创建商品日志
+     *
+     * @param goodName
+     * @param action
+     * @param goodId
+     * @return
+     */
+    @Override
+    public DataRet<String> addGoodLog(String goodName, String action, Long goodId) {
+        GoodLog goodLog = new GoodLog();
+        goodLog.setGoodName(goodName);
+        goodLog.setGoodId(goodId);
+        goodLog.setAction(action);
+        Integer result = logMapper.addGoodLog(goodLog);
+        if (result == 0) {
+            return new DataRet<>("ERROR","商品日志写入失败");
+        }
+        return new DataRet<>("商品日志写入成功");
     }
 
 }

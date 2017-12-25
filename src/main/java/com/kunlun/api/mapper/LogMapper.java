@@ -1,6 +1,7 @@
 package com.kunlun.api.mapper;
 
 import com.github.pagehelper.Page;
+import com.kunlun.entity.GoodLog;
 import com.kunlun.entity.OrderLog;
 import com.kunlun.entity.PointLog;
 import org.apache.ibatis.annotations.Mapper;
@@ -49,4 +50,12 @@ public interface LogMapper {
      * @return
      */
     Page<PointLog> findPointLogByOpenId(@Param("openid") String openid);
+
+    /**
+     * 创建商品积分
+     *
+     * @param goodLog
+     * @return
+     */
+    Integer addGoodLog(GoodLog goodLog);
 }

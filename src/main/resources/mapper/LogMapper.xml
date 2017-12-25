@@ -5,7 +5,7 @@
 <mapper namespace="com.kunlun.api.mapper.LogMapper">
 
     <!--创建订单日志-->
-    <insert id="addOrderLog" parameterMap="com.kunlun.entity.OrderLog">
+    <insert id="addOrderLog" parameterType="com.kunlun.entity.OrderLog">
         INSERT INTO t_order_log(order_no,action,ip_address,create_date,order_id)
         VALUES (#{orderNo},#{action},#{ipAddress},NOW(),#{orderId})
     </insert>
@@ -21,4 +21,19 @@
     <select id="findPointLogByOpenId" resultType="com.kunlun.entity.PointLog">
         SELECT id,user_id,action,current_point,operate_point,create_date FROM t_point_log WHERE user_id=#{openid}
     </select>
+
+    <!--创建商品日志-->
+    <insert id="addGoodLog" parameterType="com.kunlun.entity.GoodLog">
+        INSERT INTO t_good_log(
+        good_id,
+        good_name,
+        action,
+        create_date
+        ) VALUES (
+        #{goodId},
+        #{goodName},
+        #{action},
+        now()
+        )
+    </insert>
 </mapper>
