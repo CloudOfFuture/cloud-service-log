@@ -6,6 +6,8 @@ import com.kunlun.result.DataRet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author by hmy
  * @version <0.1>
@@ -22,7 +24,6 @@ public class GoodLogServiceImpl implements GoodLogService {
      *
      * @param goodName
      * @param action
-     * @param id
      * @return
      */
     @Override
@@ -33,8 +34,16 @@ public class GoodLogServiceImpl implements GoodLogService {
         goodLog.setGoodId(goodId);
         Integer result = goodLogMapper.add(goodLog);
         if (result == 0) {
-            return new DataRet<>("ERROR","商品日志写入失败");
+            return new DataRet<>("ERROR", "商品日志写入失败");
         }
         return new DataRet<>("商品日志写入成功");
     }
+
+    @Override
+    public DataRet<GoodLog> list() {
+        List<GoodLog> list = goodLogMapper.list();
+        return new DataRet<GoodLog>(list.get(1));
+    }
+
+
 }

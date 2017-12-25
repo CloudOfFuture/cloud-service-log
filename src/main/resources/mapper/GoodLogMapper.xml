@@ -31,4 +31,8 @@
         <if test="searchkey!=null">>AND CONCAT_WS('',good_name,action) LIKE #{searchkey}</if>
         <if test="goodId!=null">AND good_id=#{goodId}</if>
     </select>
+
+    <select id="list" resultType="com.kunlun.entity.GoodLog">
+        SELECT * FROM t_good_log
+    </select>
 </mapper>

@@ -5,7 +5,7 @@
 <mapper namespace="com.kunlun.api.mapper.LogMapper">
 
     <!--创建订单日志-->
-    <insert id="addOrderLog" parameterMap="com.kunlun.entity.OrderLog">
+    <insert id="addOrderLog" parameterType="com.kunlun.entity.OrderLog">
         INSERT INTO t_order_log(order_no,action,ip_address,create_date,order_id)
         VALUES (#{orderNo},#{action},#{ipAddress},NOW(),#{orderId})
     </insert>

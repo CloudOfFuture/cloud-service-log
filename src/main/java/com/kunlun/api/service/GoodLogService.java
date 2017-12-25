@@ -1,5 +1,6 @@
 package com.kunlun.api.service;
 
+import com.kunlun.entity.GoodLog;
 import com.kunlun.result.DataRet;
 
 /**
@@ -18,4 +19,6 @@ public interface GoodLogService {
      * @return
      */
     DataRet<String> saveGoodLog(String goodName, String action, Long goodId);
+
+    DataRet<GoodLog> list();
 }
