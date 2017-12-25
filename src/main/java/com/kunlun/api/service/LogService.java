@@ -1,5 +1,6 @@
 package com.kunlun.api.service;
 
+import com.kunlun.entity.GoodLog;
 import com.kunlun.entity.OrderLog;
 import com.kunlun.entity.PointLog;
 import com.kunlun.result.DataRet;
@@ -52,10 +53,8 @@ public interface LogService {
     /**
      * 创建商品日志
      *
-     * @param goodName
-     * @param action
-     * @param goodId
+     * @param goodLog
      * @return
      */
-    DataRet<String> addGoodLog(String goodName, String action, Long goodId);
+    DataRet<String> addGoodLog(GoodLog goodLog);
 }

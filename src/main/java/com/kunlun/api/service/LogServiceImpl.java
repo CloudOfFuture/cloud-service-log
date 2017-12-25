@@ -81,17 +81,11 @@ public class LogServiceImpl implements LogService {
     /**
      * 创建商品日志
      *
-     * @param goodName
-     * @param action
-     * @param goodId
+     * @param goodLog
      * @return
      */
     @Override
-    public DataRet<String> addGoodLog(String goodName, String action, Long goodId) {
-        GoodLog goodLog = new GoodLog();
-        goodLog.setGoodName(goodName);
-        goodLog.setGoodId(goodId);
-        goodLog.setAction(action);
+    public DataRet<String> addGoodLog(GoodLog goodLog) {
         Integer result = logMapper.addGoodLog(goodLog);
         if (result == 0) {
             return new DataRet<>("ERROR","商品日志写入失败");

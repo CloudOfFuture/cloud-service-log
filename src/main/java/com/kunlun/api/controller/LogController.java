@@ -1,6 +1,7 @@
 package com.kunlun.api.controller;
 
 import com.kunlun.api.service.LogService;
+import com.kunlun.entity.GoodLog;
 import com.kunlun.entity.OrderLog;
 import com.kunlun.entity.PointLog;
 import com.kunlun.result.DataRet;
@@ -78,15 +79,11 @@ public class LogController {
     /**
      * 创建商品日志
      *
-     * @param goodName
-     * @param action
-     * @param goodId
+     * @param goodLog
      * @return
      */
     @PostMapping("/add/goodLog")
-    public DataRet<String> saveGoodLog(@RequestParam(value = "goodName") String goodName,
-                                       @RequestParam(value = "action") String action,
-                                       @RequestParam(value = "goodId") Long goodId){
-        return logService.addGoodLog(goodName,action,goodId);
+    public DataRet<String> saveGoodLog(@RequestBody GoodLog goodLog){
+        return logService.addGoodLog(goodLog);
     }
 }
