@@ -86,4 +86,6 @@ public class LogController {
     public DataRet<String> saveGoodLog(@RequestBody GoodLog goodLog){
         return logService.addGoodLog(goodLog);
     }
+
+
 }
