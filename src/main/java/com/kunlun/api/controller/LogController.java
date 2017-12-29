@@ -95,8 +95,8 @@ public class LogController {
      * @param jsonArray
      * @return
      */
-    @PostMapping("/add/goodLog")
-    public DataRet<String> saveGoodLog(@RequestBody JSONArray jsonArray) {
+    @PostMapping("/add/goodLogs")
+    public DataRet<String> saveGoodLogs(@RequestBody JSONArray jsonArray) {
         List<GoodLog> goodLogs = jsonArray.toJavaList(GoodLog.class);
         return logService.addGoodLogs(goodLogs);
     }
