@@ -1,5 +1,7 @@
 package com.kunlun.api.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.kunlun.api.service.LogService;
 import com.kunlun.entity.GoodLog;
 import com.kunlun.entity.OrderLog;
@@ -83,9 +85,20 @@ public class LogController {
      * @return
      */
     @PostMapping("/add/goodLog")
-    public DataRet<String> saveGoodLog(@RequestBody GoodLog goodLog){
+    public DataRet<String> saveGoodLog(@RequestBody GoodLog goodLog) {
         return logService.addGoodLog(goodLog);
     }
 
+    /**
+     * 创建商品日志
+     *
+     * @param jsonArray
+     * @return
+     */
+    @PostMapping("/add/goodLog")
+    public DataRet<String> saveGoodLog(@RequestBody JSONArray jsonArray) {
+        List<GoodLog> goodLogs = jsonArray.toJavaList(GoodLog.class);
+        return logService.addGoodLogs(goodLogs);
+    }
 
 }
