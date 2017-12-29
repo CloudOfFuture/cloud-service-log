@@ -87,5 +87,4 @@ public class LogController {
         return logService.addGoodLog(goodLog);
     }
 
-
 }
