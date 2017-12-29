@@ -85,7 +85,7 @@ public class LogController {
      * @return
      */
     @PostMapping("/add/goodLog")
-    public DataRet<String> saveGoodLog(@RequestBody GoodLog goodLog) {
+    public DataRet<String> saveGoodLog(@RequestBody GoodLog goodLog){
         return logService.addGoodLog(goodLog);
     }
 
