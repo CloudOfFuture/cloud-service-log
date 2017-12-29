@@ -88,9 +88,20 @@ public class LogServiceImpl implements LogService {
     public DataRet<String> addGoodLog(GoodLog goodLog) {
         Integer result = logMapper.addGoodLog(goodLog);
         if (result == 0) {
-            return new DataRet<>("ERROR","商品日志写入失败");
+            return new DataRet<>("ERROR", "商品日志写入失败");
         }
         return new DataRet<>("商品日志写入成功");
     }
 
+    /**
+     * 批量创建商品日志
+     *
+     * @param goodLogs
+     * @return
+     */
+    @Override
+    public DataRet<String> addGoodLogs(List<GoodLog> goodLogs) {
+        goodLogs.forEach(goodLog -> logMapper.addGoodLog(goodLog));
+        return new DataRet<>("商品日志写入成功");
+    }
 }
