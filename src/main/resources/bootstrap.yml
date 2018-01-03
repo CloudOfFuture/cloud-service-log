@@ -1,0 +1,10 @@
+server:
+  port: 7020
+spring:
+  application:
+    name: cloud-service-log
+  cloud:
+    config:
+      uri: http://localhost:8762
+      label: master
+      profile: dev
