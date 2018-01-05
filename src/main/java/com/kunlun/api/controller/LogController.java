@@ -85,7 +85,7 @@ public class LogController {
      * @return
      */
     @PostMapping("/add/goodLog")
-    public DataRet<String> saveGoodLog(@RequestBody GoodLog goodLog){
+    public DataRet<String> saveGoodLog(@RequestBody GoodLog goodLog) {
         return logService.addGoodLog(goodLog);
     }
 
@@ -99,6 +99,18 @@ public class LogController {
     public DataRet<String> saveGoodLogs(@RequestBody JSONArray jsonArray) {
         List<GoodLog> goodLogs = jsonArray.toJavaList(GoodLog.class);
         return logService.addGoodLogs(goodLogs);
+    }
+
+    /**
+     * 创建积分日志
+     *
+     * @param jsonArray JSONArray
+     * @return
+     */
+    @PostMapping("/add/pointLogs")
+    public DataRet<String> addPointLogList(@RequestBody JSONArray jsonArray) {
+        List<PointLog> pointLogs = jsonArray.toJavaList(PointLog.class);
+        return logService.addPointLogList(pointLogs);
     }
 
 }

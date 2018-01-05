@@ -1,6 +1,7 @@
 package com.kunlun.api.mapper;
 
 import com.github.pagehelper.Page;
+import com.kunlun.entity.Good;
 import com.kunlun.entity.GoodLog;
 import com.kunlun.entity.OrderLog;
 import com.kunlun.entity.PointLog;
@@ -57,5 +58,21 @@ public interface LogMapper {
      * @param goodLog
      * @return
      */
-    Integer addGoodLog(GoodLog goodLog);
+    int addGoodLog(GoodLog goodLog);
+
+    /**
+     * 批量写入日志
+     *
+     * @param goodLogList
+     * @return
+     */
+    int addGoodLogList(@Param("goodLogList") List<GoodLog> goodLogList);
+
+    /**
+     * 批量写入日志
+     *
+     * @param pointLogList
+     * @return
+     */
+    int addPointLogList(@Param("pointLogList") List<PointLog> pointLogList);
 }

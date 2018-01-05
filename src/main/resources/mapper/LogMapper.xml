@@ -36,4 +36,54 @@
         now()
         )
     </insert>
+
+    <!--批量创建商品日志-->
+    <insert id="addGoodLogList" parameterType="com.kunlun.entity.GoodLog">
+        INSERT INTO t_good_log(
+        good_id,
+        good_name,
+        action,
+        create_date
+        )
+        <foreach collection="goodLogList" index="index" item="item">
+            VALUES (
+            #{item.goodId},
+            #{item.goodName},
+            #{item.action},
+            now() )
+        </foreach>
+    </insert>
+
+    <!--创建积分日志-->
+    <insert id="addPointLog" parameterType="com.kunlun.entity.PointLog">
+        INSERT INTO t_point_log(
+        user_id,
+        action,
+        current_point,
+        operate_point,
+        create_date)
+        VALUES (
+        #{userId},
+        #{action},
+        #{currentPoint},
+        #{operatePoint},
+        now())
+    </insert>
+    <!--批量创建积分日志-->
+    <insert id="addPointLogList" parameterType="com.kunlun.entity.PointLog">
+        INSERT INTO t_point_log(
+        user_id,
+        action,
+        current_point,
+        operate_point,
+        create_date)
+        <foreach collection="pointLogList" item="item" index="index">
+            VALUES (
+            #{item.userId},
+            #{item.action},
+            #{item.currentPoint},
+            #{item.operatePoint},
+            now())
+        </foreach>
+    </insert>
 </mapper>

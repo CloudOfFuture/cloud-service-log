@@ -65,4 +65,12 @@ public interface LogService {
      * @return
      */
     DataRet<String> addGoodLogs(List<GoodLog> goodLogs);
+
+    /**
+     * 创建积分日志
+     *
+     * @param pointLogs
+     * @return
+     */
+    DataRet<String> addPointLogList(List<PointLog> pointLogs);
 }

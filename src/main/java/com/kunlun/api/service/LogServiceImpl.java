@@ -26,10 +26,39 @@ public class LogServiceImpl implements LogService {
     private LogMapper logMapper;
 
     /**
+     * 根据订单id查询日志列表
+     *
+     * @param orderId Long
+     * @return DataRet
+     */
+    @Override
+    public DataRet<List<OrderLog>> findByOrderId(Long orderId) {
+        List<OrderLog> orderLogs = logMapper.findByOrderId(orderId);
+        return new DataRet<>(orderLogs);
+    }
+
+
+    /**
+     * 根据openid查询 积分日志列表
+     *
+     * @param pageNo   Integer
+     * @param pageSize Integer
+     * @param wxCode   String
+     * @return PageResult
+     */
+    @Override
+    public PageResult findPointLogByOpenId(Integer pageNo, Integer pageSize, String wxCode) {
+        String openid = WxUtil.getOpenId(wxCode);
+        PageHelper.startPage(pageNo, pageSize);
+        Page<PointLog> page = logMapper.findPointLogByOpenId(openid);
+        return new PageResult<>(page);
+    }
+
+    /**
      * 创建订单日志
      *
-     * @param orderLog
-     * @return
+     * @param orderLog OrderLog
+     * @return DataRet
      */
     @Override
     public DataRet<String> addOrderLog(OrderLog orderLog) {
@@ -38,70 +67,62 @@ public class LogServiceImpl implements LogService {
     }
 
     /**
-     * 根据订单id查询日志列表
-     *
-     * @param orderId
-     * @return
-     */
-    @Override
-    public DataRet<List<OrderLog>> findByOrderId(Long orderId) {
-        List<OrderLog> orderLogs = logMapper.findByOrderId(orderId);
-        return new DataRet<>(orderLogs);
-    }
-
-    /**
      * 创建积分日志
      *
-     * @param pointLog
-     * @return
+     * @param pointLog PointLog
+     * @return DataRet
      */
     @Override
     public DataRet<String> addPointLog(PointLog pointLog) {
-        logMapper.addPointLog(pointLog);
-        return new DataRet<>("创建积分日志成功");
+        int result = logMapper.addPointLog(pointLog);
+        if (result > 0) {
+            return new DataRet<>("创建积分日志成功");
+        }
+        return new DataRet<>("ERROR", "积分日志写入失败");
     }
-
-    /**
-     * 根据openid查询 积分日志列表
-     *
-     * @param pageNo
-     * @param pageSize
-     * @param wxCode
-     * @return
-     */
-    @Override
-    public PageResult findPointLogByOpenId(Integer pageNo, Integer pageSize, String wxCode) {
-        String openid = WxUtil.getOpenId(wxCode);
-        PageHelper.startPage(pageNo, pageSize);
-        Page<PointLog> page = logMapper.findPointLogByOpenId(openid);
-        return new PageResult(page);
-    }
-
 
     /**
      * 创建商品日志
      *
-     * @param goodLog
-     * @return
+     * @param goodLog GoodLog
+     * @return DataRet
      */
     @Override
     public DataRet<String> addGoodLog(GoodLog goodLog) {
-        Integer result = logMapper.addGoodLog(goodLog);
-        if (result == 0) {
-            return new DataRet<>("ERROR", "商品日志写入失败");
+        int result = logMapper.addGoodLog(goodLog);
+        if (result > 0) {
+            return new DataRet<>("商品日志写入成功");
         }
-        return new DataRet<>("商品日志写入成功");
+        return new DataRet<>("ERROR", "商品日志写入失败");
     }
 
     /**
      * 批量创建商品日志
      *
-     * @param goodLogs
-     * @return
+     * @param goodLogs goodLogs
+     * @return DataRet
      */
     @Override
     public DataRet<String> addGoodLogs(List<GoodLog> goodLogs) {
-        goodLogs.forEach(goodLog -> logMapper.addGoodLog(goodLog));
-        return new DataRet<>("商品日志写入成功");
+        int result = logMapper.addGoodLogList(goodLogs);
+        if (result > 0) {
+            return new DataRet<>("商品日志写入成功");
+        }
+        return new DataRet<>("ERROR", "日志日入失败");
+    }
+
+    /**
+     * 积分日志列表写入
+     *
+     * @param pointLogs List
+     * @return DataRet
+     */
+    @Override
+    public DataRet<String> addPointLogList(List<PointLog> pointLogs) {
+        int result = logMapper.addPointLogList(pointLogs);
+        if (result > 0) {
+            return new DataRet<>("积分日志写入成功");
+        }
+        return new DataRet<>("ERROR", "日志日入失败");
     }
 }
