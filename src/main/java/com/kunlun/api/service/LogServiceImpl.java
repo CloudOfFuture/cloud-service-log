@@ -62,8 +62,11 @@ public class LogServiceImpl implements LogService {
      */
     @Override
     public DataRet<String> addOrderLog(OrderLog orderLog) {
-        logMapper.addOrderLog(orderLog);
-        return new DataRet<>("创建订单日志成功");
+        int result = logMapper.addOrderLog(orderLog);
+        if (result > 0) {
+            return new DataRet<>("创建订单日志成功");
+        }
+        return new DataRet<>("ADD_ERROR", "创建失败");
     }
 
     /**
