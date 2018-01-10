@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.kunlun.api.mapper.LogMapper;
 import com.kunlun.entity.GoodLog;
+import com.kunlun.entity.Logistics;
 import com.kunlun.entity.OrderLog;
 import com.kunlun.entity.PointLog;
 import com.kunlun.result.DataRet;
@@ -127,5 +128,20 @@ public class LogServiceImpl implements LogService {
             return new DataRet<>("积分日志写入成功");
         }
         return new DataRet<>("ERROR", "日志日入失败");
+    }
+
+    /**
+     * 生成发货日志
+     *
+     * @param logistics
+     * @return
+     */
+    @Override
+    public DataRet addLogisticLog(Logistics logistics) {
+        int result = logMapper.addLogisticLog(logistics);
+        if (result > 0) {
+            return new DataRet("生成发货日志写入成功");
+        }
+        return new DataRet("ERROR", "生成发货日志失败");
     }
 }

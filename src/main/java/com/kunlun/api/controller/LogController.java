@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kunlun.api.service.LogService;
 import com.kunlun.entity.GoodLog;
+import com.kunlun.entity.Logistics;
 import com.kunlun.entity.OrderLog;
 import com.kunlun.entity.PointLog;
 import com.kunlun.result.DataRet;
@@ -111,6 +112,17 @@ public class LogController {
     public DataRet<String> addPointLogList(@RequestBody JSONArray jsonArray) {
         List<PointLog> pointLogs = jsonArray.toJavaList(PointLog.class);
         return logService.addPointLogList(pointLogs);
+    }
+
+    /**
+     * 生成发货日志
+     *
+     * @param logistics
+     * @return
+     */
+    @PostMapping("/add/LogisticLog")
+    public DataRet addLogisticLog(@RequestBody Logistics logistics) {
+        return logService.addLogisticLog(logistics);
     }
 
 }

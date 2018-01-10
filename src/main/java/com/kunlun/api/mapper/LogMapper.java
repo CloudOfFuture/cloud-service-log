@@ -1,10 +1,7 @@
 package com.kunlun.api.mapper;
 
 import com.github.pagehelper.Page;
-import com.kunlun.entity.Good;
-import com.kunlun.entity.GoodLog;
-import com.kunlun.entity.OrderLog;
-import com.kunlun.entity.PointLog;
+import com.kunlun.entity.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -75,4 +72,12 @@ public interface LogMapper {
      * @return
      */
     int addPointLogList(@Param("pointLogList") List<PointLog> pointLogList);
+
+    /**
+     * 生成发货日志
+     *
+     * @param logistics
+     * @return
+     */
+    int addLogisticLog(Logistics logistics);
 }

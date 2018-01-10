@@ -86,4 +86,27 @@
             now())
         </foreach>
     </insert>
+
+    <!--生成发货日志-->
+    <insert id="addLogisticLog" parameterType="com.kunlun.entity.Logistics">
+        INSERT INTO t_logistics(
+        order_id,
+        sender_id,
+        logistic_name,
+        express_no,
+        logistic_no,
+        company_code,
+        create_date,
+        update_date
+        ) VALUES (
+        #{orderId},
+        #{senderId},
+        #{logisticName},
+        #{expressNo},
+        #{logisticNo},
+        #{companyCode},
+        NOW(),
+        NOW()
+        )
+    </insert>
 </mapper>

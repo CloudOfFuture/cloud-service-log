@@ -1,6 +1,7 @@
 package com.kunlun.api.service;
 
 import com.kunlun.entity.GoodLog;
+import com.kunlun.entity.Logistics;
 import com.kunlun.entity.OrderLog;
 import com.kunlun.entity.PointLog;
 import com.kunlun.result.DataRet;
@@ -73,4 +74,12 @@ public interface LogService {
      * @return
      */
     DataRet<String> addPointLogList(List<PointLog> pointLogs);
+
+    /**
+     * 生成发货日志
+     *
+     * @param logistics
+     * @return
+     */
+    DataRet addLogisticLog(Logistics logistics);
 }
