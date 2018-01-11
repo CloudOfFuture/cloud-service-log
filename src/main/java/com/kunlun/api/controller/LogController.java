@@ -1,7 +1,6 @@
 package com.kunlun.api.controller;
 
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.kunlun.api.service.LogService;
 import com.kunlun.entity.GoodLog;
 import com.kunlun.entity.Logistics;
